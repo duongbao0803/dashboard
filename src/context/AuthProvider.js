@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PATH_NAME } from "../constants/pathname";
@@ -5,14 +6,16 @@ import { PATH_NAME } from "../constants/pathname";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const { AUTH, DASHBOARD } = PATH_NAME;
+  const { AUTH, EMPLOYEE } = PATH_NAME;
 
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  const login = (userData) => {
-    setUser(userData);
-    navigate(DASHBOARD.STATISTIC);
+  const loginPermission = (userData) => {
+    // setUser(userData);
+    const {role, email } = userData
+    navigate(EMPLOYEE.EMPLOYEE_LIST);
+    localStorage.setItem("info", JSON.stringify({role, email}));
   };
 
   const logout = () => {
@@ -20,13 +23,15 @@ export const AuthProvider = ({ children }) => {
     navigate(AUTH.REGISTER);
   };
 
-  const isAuthenticated = !!user;
+  const isAuthenticated = !!Cookies.get("accessToken");
+  const userData = JSON.parse(localStorage.getItem("info"));
+
   const hasPermission = (requiredRole) =>
-    user && user.role && user.role === requiredRole;
+    userData && userData.role === requiredRole;
 
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, hasPermission, login, logout }}
+      value={{ user, isAuthenticated, hasPermission, loginPermission, logout }}
     >
       {children}
     </AuthContext.Provider>

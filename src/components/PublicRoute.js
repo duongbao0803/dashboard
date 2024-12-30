@@ -5,7 +5,7 @@ import { useAuth } from "../context/AuthProvider";
 const PublicRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
-  return isAuthenticated ? <Navigate to="/dashboard" /> : children;
+  return isAuthenticated ? <Navigate to="/employee" /> : children;
 };
 
 export default PublicRoute;

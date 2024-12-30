@@ -10,6 +10,12 @@ const PATH_NAME = {
     STATISTIC: "/dashboard",
     USER: "/user",
   },
+  EMPLOYEE: {
+    EMPLOYEE_LIST: "/employee",
+    EMPLOYEE_DETAIL: "/employee/:id",
+    EMPLOYEE_CREATE: "/employee/create",
+    EMPLOYEE_UPDATE: "/employee/:id/update"
+  }
 };
 
 export { PATH_NAME };

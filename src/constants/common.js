@@ -14,7 +14,7 @@ const COMMON_CONSTANT = {
       INTERNAL_SERVER_ERROR: 500,
     },
   },
-  ROLE_PERMISSION_ADMIN: "admin",
+  ROLE_PERMISSION_ADMIN: "ADMIN",
 };
 
 export { COMMON_CONSTANT };
