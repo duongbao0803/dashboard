@@ -2,16 +2,17 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { UserManagementView } from "@/sections/users/view";
+import { EmployeeManagementView } from "../sections/employee/view";
 
-function UserManagement() {
+function EmployeeManagement() {
   return (
     <div>
       <Helmet>
-        <title> UMS | User Management </title>
+        <title> EMS | Quản lý nhân viên </title>
       </Helmet>
-      <UserManagementView />
+      <EmployeeManagementView />
     </div>
   );
 }
 
-export default UserManagement;
+export default EmployeeManagement;

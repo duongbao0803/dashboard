@@ -7,9 +7,9 @@ import { DeleteOutlined, EditOutlined, MoreOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import useUserStore from "@/hooks/useUserStore";
 import showDeleteConfirm from "@/sections/users/DeleteModal";
-import EditModal from "@/sections/users/EditModal";
+import EditModal from "../sections/employee/EditModal";
 
-const DropdownBox = ({ userId, userInfo }) => {
+const DropdownBox = ({ employeeId, employeeInfo }) => {
   const { deleteItem } = useUserStore();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const DropdownBox = ({ userId, userInfo }) => {
                   onClick={openEditModal}
                 >
                   <EditOutlined className="pr-2" />
-                  Edit User
+                  Edit Employee
                 </Link>
               ),
             },
@@ -41,10 +41,10 @@ const DropdownBox = ({ userId, userInfo }) => {
                 <Link
                   rel="noopener noreferrer"
                   href="#"
-                  onClick={() => showDeleteConfirm({ userId, deleteItem })}
+                  onClick={() => showDeleteConfirm({ employeeId, deleteItem })}
                 >
                   <DeleteOutlined className="pr-2" />
-                  Delete User
+                  Delete Employee
                 </Link>
               ),
             },
@@ -55,7 +55,7 @@ const DropdownBox = ({ userId, userInfo }) => {
         <MoreOutlined className="rotate-90" />
       </Dropdown>
 
-      <EditModal isOpen={isOpen} setIsOpen={setIsOpen} userInfo={userInfo} />
+      <EditModal isOpen={isOpen} setIsOpen={setIsOpen} employeeInfo={employeeInfo} />
     </>
   );
 };

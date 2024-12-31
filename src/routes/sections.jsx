@@ -5,7 +5,7 @@ import { Loading } from "@/components";
 import useAuth from "@/hooks/useAuth";
 import AuthPage from "../pages/AuthPage/AuthPage";
 
-export const UserManagementView = lazy(() => import("@/pages/UserManagement"));
+export const EmployeeManagementView = lazy(() => import("@/pages/EmployeeManagement")) 
 
 export const Router = () => {
   const { isAuthenticated } = useAuth();
@@ -13,7 +13,7 @@ export const Router = () => {
   const routes = useRoutes([
     {
       path: "/",
-      element: isAuthenticated ? <Navigate to="/user" /> : <AuthPage />,
+      element: isAuthenticated ? <Navigate to="/employee" /> : <AuthPage />,
     },
     {
       element: isAuthenticated ? (
@@ -27,8 +27,8 @@ export const Router = () => {
       ),
       children: [
         {
-          element: <UserManagementView />,
-          path: "/user",
+          element: <EmployeeManagementView />,
+          path: "/employee",
         },
       ],
     },

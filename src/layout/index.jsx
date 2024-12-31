@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import PropTypes from "prop-types";
 import { Layout, Menu, notification } from "antd";
-import { HomeOutlined, UserAddOutlined } from "@ant-design/icons";
+import { HomeOutlined, UserAddOutlined, UsergroupAddOutlined } from "@ant-design/icons";
 import { FloatButton } from "@/components";
 import useAuth from "@/hooks/useAuth";
 import Logo from "@/assets/image/logo_web.jpg";
@@ -39,7 +39,7 @@ const DashboardLayout = ({ children }) => {
   const defaultSelectedKeys = resetDefaultSelectedKeys();
 
   const items = [
-    getItem("Dashboard", "1", <HomeOutlined />, null, "/user"),
+    getItem("Nhân viên", "1", <UsergroupAddOutlined />, null, "/employee"),
     getItem("Information", "2", <UserAddOutlined />, null),
   ];
 

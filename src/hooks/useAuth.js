@@ -5,19 +5,19 @@ import { create } from "zustand";
 const useAuth = create((set) => ({
   infoUser: {},
 
-  isAuthenticated: !!Cookies.get("__token"),
+  isAuthenticated: !!Cookies.get("accessToken"),
   user: {},
   login: () => {
     set({ isAuthenticated: true });
     // window.location.href = "/user";
   },
   fetchUserInfo: async () => {
-    var decoded = jwtDecode(Cookies.get("__token"));
+    var decoded = jwtDecode(Cookies.get("accessToken"));
     set({ user: decoded });
   },
   logout: () => {
     window.location.href = "/";
-    Cookies.remove("__token");
+    Cookies.remove("accessToken");
     sessionStorage.clear();
     set({ isAuthenticated: false });
   },
